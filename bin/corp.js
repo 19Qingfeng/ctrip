@@ -43,8 +43,6 @@ program
         )
       );
     }
-    console.log(options.prefix, 'options');
-    // console.log(program.args, 'program.args');
     require('../src/create/index')(name, options);
   });
 

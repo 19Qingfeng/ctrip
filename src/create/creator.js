@@ -10,6 +10,8 @@ const {
 } = require('../utils/index');
 const { getGitConfig } = require('../utils/utils');
 
+const { name: cliName, version: cliVersion } = require('../../package.json');
+
 class Creator extends EventsEmitter {
   constructor({ targetDir }) {
     super();
@@ -160,6 +162,10 @@ class Creator extends EventsEmitter {
 
   async emitLogo() {
     await clearConsole();
+    console.log(`
+      \n
+      ${cliName}@${cliVersion}
+    `);
     console.log(`
       created a new package: ${chalk.green(this.packageName)}
     `);
