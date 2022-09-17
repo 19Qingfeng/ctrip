@@ -1,0 +1,27 @@
+{
+  "name": "trip-cli",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=16"
+  },
+  "homepage": "",
+  "bin": {
+    "ctrip": "./bin/corp.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.0.1",
+    "commander": "^9.4.0",
+    "ejs": "^3.1.8",
+    "execa": "^5.1.0",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^8.1.1",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "semver": "^7.3.7"
+  }
+}

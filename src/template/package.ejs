@@ -1,0 +1,45 @@
+{
+  "name": "<%= componentName %>",
+  "version": "1.0.0",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "description": "<%= description %>",
+  "types": "dist/index.d.ts",
+  "author": "<%= author %>",
+  "email": "<%= email %>",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/esm/index.js"
+      },
+      "types": "./dist/index.d.ts"
+    },
+    "./index.min.css": "./dist/index.min.css",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "homepage": "<%= homepage %>",
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "<%= issuesUrl %>"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.config.js --environment buildName=<%= dirName %>",
+    "prepublishOnly": "source ../../scripts/join-dir.sh <%= dirName %>"
+  },
+  "keywords": [
+    "react",
+    "ui-component",
+    "@ctrip"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "license": "ISC",
+  "dependencies": {}
+}
