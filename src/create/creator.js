@@ -100,15 +100,21 @@ class Creator extends EventsEmitter {
 
   async createFiles() {
     // index.ts
-    this.files['index.tsx'] = "export * from './src/index'";
+    this.files['index.ts'] = "export * from './src/index'";
     // src/index.tsx
-    this.files['src/index.tsx'] = await ejs.renderFile(
+    this.files['src/index.ts'] = await ejs.renderFile(
       path.resolve(__dirname, '../template/index.ejs'),
       {
         componentName: parserComponentName(this.dirName),
       }
     );
-    this.files['src/style/index.css'] = '';
+    // TODO: Css in JS 模板
+    this.files['src/style/index.tsx'] = await ejs.renderFile(
+      path.resolve(__dirname, '../template/styled.ejs'),
+      {
+        componentName: parserComponentName(this.dirName),
+      }
+    );
   }
 
   async createConfigFiles() {
@@ -128,7 +134,7 @@ class Creator extends EventsEmitter {
     } = packageInfo;
     const docUrl =
       'https://static.fws.qa.nt.ctripcorp.com/modules/corp/corp-framework-international-components-doc/index.html';
-    this.files['readme.md'] = await ejs.renderFile(
+    this.files['README.md'] = await ejs.renderFile(
       path.resolve(__dirname, '../template/readme.ejs'),
       {
         projectDocumentationUrl: docUrl, // 文档 URL
@@ -164,10 +170,14 @@ class Creator extends EventsEmitter {
     await clearConsole();
     console.log(`
       \n
-      ${cliName}@${cliVersion}
+      ${chalk.green(cliName + '@' + cliVersion + ':')}
     `);
     console.log(`
       created a new package: ${chalk.green(this.packageName)}
+
+      ${chalk.blackBright(
+        'If you have any questions, you can check /readme.md first.'
+      )}
     `);
   }
 }

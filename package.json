@@ -1,12 +1,15 @@
 {
   "name": "crop-cli",
-  "version": "1.0.2",
-  "engines": {
-    "node": ">=16"
-  },
+  "version": "1.0.4",
   "homepage": "",
   "bin": {
     "ctrip": "./bin/corp.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "create": "ctrip create"
   },
   "files": [
     "dist",
