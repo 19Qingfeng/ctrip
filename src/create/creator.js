@@ -99,20 +99,21 @@ class Creator extends EventsEmitter {
   }
 
   async createFiles() {
+    const componentName = parserComponentName(this.dirName);
     // index.ts
     this.files['index.ts'] = "export * from './src/index'";
     // src/index.tsx
-    this.files['src/index.ts'] = await ejs.renderFile(
+    this.files[`src/${componentName}.tsx`] = await ejs.renderFile(
       path.resolve(__dirname, '../template/index.ejs'),
       {
-        componentName: parserComponentName(this.dirName),
+        componentName,
       }
     );
     // TODO: Css in JS 模板
     this.files['src/style/index.tsx'] = await ejs.renderFile(
       path.resolve(__dirname, '../template/styled.ejs'),
       {
-        componentName: parserComponentName(this.dirName),
+        componentName,
       }
     );
   }
