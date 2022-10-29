@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "node ../../scripts/build.config.js --environment buildName=<%= dirName %>",
+    "postpublish": "node ../../scripts/postpublish.config.js",
     "prepublishOnly": "source ../../scripts/join-dir.sh <%= dirName %>"
   },
   "keywords": [
